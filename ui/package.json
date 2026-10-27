@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "certainted-dashboard",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "esbuild app.tsx --bundle --target=es2020 --format=iife --outfile=dist/app.js --jsx=automatic --jsx-import-source=preact && esbuild ../publicui/app.ts --bundle --target=es2020 --format=iife --outfile=../publicui/dist/app.js",
+    "test": "esbuild notification_tracker.test.mjs --bundle --platform=node --format=esm --outfile=dist/notification_tracker.test.mjs && node --test dist/notification_tracker.test.mjs"
+  },
+  "dependencies": {
+    "preact": "^10.27.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.0"
+  }
+}

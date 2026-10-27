@@ -1,0 +1,15 @@
+certainted
+# Ignore binaries built before the rename, too.
+certained
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+ui/node_modules/
+.gocache/
+.gopath/
+dist/
+__pycache__/
+.DS_Store

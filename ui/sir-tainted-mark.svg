@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Sir Tainted, a smiling face wearing a plumed knight's helmet</title>
+  <defs>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7edf0"/>
+      <stop offset=".5" stop-color="#a6b5bb"/>
+      <stop offset="1" stop-color="#677e88"/>
+    </linearGradient>
+  </defs>
+  <!-- The plume trails behind the helmet, leaving the face as the focal point. -->
+  <path d="M29 16C23 6 14 6 9 13c5-1 7 2 5 5-6-1-11 5-8 11 3-3 7-2 8 1 1 4-2 9-5 12 9-1 15-7 17-16l7-6Z" fill="#e54740" stroke="#172c3b" stroke-width="2.8" stroke-linejoin="round"/>
+  <path d="M12 16c7-2 12 3 13 9M9 29c6-2 9 1 8 6" fill="none" stroke="#ff7770" stroke-width="2" stroke-linecap="round"/>
+  <!-- The steel bowl frames a warm, uncovered face. -->
+  <path d="M13 35C11 19 19 9 32 8c13-1 22 9 22 27l-3 13-9 8H22l-9-8Z" fill="url(#steel)" stroke="#172c3b" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M19 34c2-8 7-11 13-11s11 3 13 11v12c0 9-5 15-13 15s-13-6-13-15Z" fill="#ffdfb6" stroke="#172c3b" stroke-width="2.8"/>
+  <path d="M21 48c1 2 4 3 6 2M37 50c2 1 5 0 6-2" fill="none" stroke="#f2b497" stroke-width="2" stroke-linecap="round"/>
+  <path d="M26 42v1m12-1v1" stroke="#172c3b" stroke-width="3.3" stroke-linecap="round"/>
+  <path d="M28 52c2 2 6 2 8 0" fill="none" stroke="#172c3b" stroke-width="2.7" stroke-linecap="round"/>
+  <!-- A swept, vented visor echoes the reference helmet without covering the smile. -->
+  <path d="M14 32C17 18 24 10 34 9c9-1 17 5 20 16C40 24 27 29 16 39l-2-7Z" fill="url(#steel)" stroke="#172c3b" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M19 29C23 18 29 13 36 12" fill="none" stroke="#f7faf9" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M41 20l4 5m1-7 4 6m1-5 2 5" fill="none" stroke="#172c3b" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M14 33c0 7 1 12 5 17l4-3-3-12-4 4ZM50 30c2 6 1 13-4 20l-4-3 3-13Z" fill="#7e949d" stroke="#172c3b" stroke-width="2.6" stroke-linejoin="round"/>
+  <circle cx="16" cy="42" r="1.2" fill="#e8edf0"/>
+  <circle cx="48" cy="42" r="1.2" fill="#e8edf0"/>
+</svg>

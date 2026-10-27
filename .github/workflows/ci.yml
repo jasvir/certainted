@@ -1,0 +1,34 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ui/package-lock.json
+      - name: Build dashboard
+        working-directory: ui
+        run: |
+          npm ci
+          npx tsc --noEmit
+          npm test
+          npm run build
+      - name: Test Go modules
+        run: go test ./...
+      - name: Build executable
+        run: go build -o certainted .

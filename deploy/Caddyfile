@@ -1,0 +1,7 @@
+certainted.com {
+	reverse_proxy 127.0.0.1:8790
+}
+
+www.certainted.com {
+	redir https://certainted.com{uri} permanent
+}

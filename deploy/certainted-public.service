@@ -1,0 +1,22 @@
+[Unit]
+Description=Certainted public community report dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=certainted
+ExecStart=/opt/certainted/certainted public-serve -db /var/lib/certainted/community.db -http 127.0.0.1:8790
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+CapabilityBoundingSet=
+MemoryMax=384M
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target

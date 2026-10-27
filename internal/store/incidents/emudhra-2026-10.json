@@ -1,0 +1,85 @@
+{
+  "id": "emudhra-2026-10-weak-intermediate-keys",
+  "as_of": "2026-10-26",
+  "sources": [
+    "https://bugzilla.mozilla.org/show_bug.cgi?id=2083449",
+    "https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/",
+    "https://emudhra.com/en/post/certificate-security-incident",
+    "https://emudhra.we-have-a-problem.com/impacted-intermediates.json"
+  ],
+  "description": "Eight weak eMudhra intermediate CA keys reported compromised in October 2026. Each has an eMudhra-issued and a Sectigo cross-signed certificate. These identifiers are a bundled incident notice, not a locally imported or signature-verified CRL. The two code-signing keys are outside Certainted's TLS probe scope. The emSign ECC Root CA - G3 was distrusted as a precaution; its key is not identified as compromised here.",
+  "intermediates": [
+    {
+      "name": "EM DV TLS CA - G3B",
+      "usage": "tls",
+      "spki_sha256": "EBED6475C2C2D80FCB199F3FE8DD6E6B3CE60B77EB15D4E42C3DEC0C6F5B5105",
+      "certificates": [
+        {"issued_by":"emSign Root TLS CA - G3","sha256":"42C4ACCD12C4F59597925E1A08A7A90102608543809308D50EC427E118BA1493","serial_hex":"A4AEE678F23362B4C0E460B772F214"},
+        {"issued_by":"AAA Certificate Services","sha256":"45A883F349AEDFD5F3A649B5498FFB121712BA8B448F3F2A91DBC5A766FCDDBE","serial_hex":"A024FDF4BA665C785CE4A020483858B7"}
+      ]
+    },
+    {
+      "name": "EM OV TLS CA - G3B",
+      "usage": "tls",
+      "spki_sha256": "43BFFA19D6EF651451F6841E019931E96F6F2EAEFF28AB4B6F1CE4576DE2717B",
+      "certificates": [
+        {"issued_by":"emSign Root TLS CA - G3","sha256":"98B896625C0C230ADEEC3EB2CF6AAD5001ECF9156A68644E82374CE5833BC25B","serial_hex":"6CADA367FB1C100088120EA202D568"},
+        {"issued_by":"AAA Certificate Services","sha256":"5F1DED4DD590AF74631290CF073B122A2AAC6A1FA479778A0BD43579BD832699","serial_hex":"E94223BDE92F914E5AB9ACABFDAC3710"}
+      ]
+    },
+    {
+      "name": "EM EV TLS CA - G3B",
+      "usage": "tls",
+      "spki_sha256": "E0254C7FCDC265E2F0F8A428DABB75AB4AE039B4872D62F5EE57F0877D5A8A41",
+      "certificates": [
+        {"issued_by":"emSign Root TLS CA - G3","sha256":"E7568FE6E12331F4FD7DE61DA4C7559D0F8EB192A218D4741A3BA75184333838","serial_hex":"C7C41EFE92D825F05EAE841A4A82C1"},
+        {"issued_by":"AAA Certificate Services","sha256":"579480AEA166290BD3C643589E795FC0D0E54E86505D180F1DFF99EFD3199512","serial_hex":"D8F8685E4F2BD9D82402A85A1C1EB731"}
+      ]
+    },
+    {
+      "name": "EM DV TLS CA - G3C",
+      "usage": "tls",
+      "spki_sha256": "49DD353DC2B919A3770645117D0E60C16115E7D1BC259EEFE734B00EA434FE5F",
+      "certificates": [
+        {"issued_by":"emSign Root TLS CA - G3","sha256":"0164D7CEAE5BB909C272AF151FF44B1177AE9B47D9424B94F1D9558C30934D19","serial_hex":"588B2E3C2BB8CDA13E1A1209254321"},
+        {"issued_by":"AAA Certificate Services","sha256":"62B7F9868263F72F6911FC78CEAF72C1979158B7368BF648683BB2AA39B02E72","serial_hex":"91F347F1A5B7D39962B95E0EE4E299D1"}
+      ]
+    },
+    {
+      "name": "EM OV TLS CA - G3C",
+      "usage": "tls",
+      "spki_sha256": "63ECEFEE431D49523BC1136C4E72D0206A477086CAF606CD5CF025686C109CF8",
+      "certificates": [
+        {"issued_by":"emSign Root TLS CA - G3","sha256":"CB6E15165AC802E9B3F993F16C25D41F4E81C21EBDE71AE1B012AC00BF9C7C3F","serial_hex":"296926C227A3A1526392B19482A504"},
+        {"issued_by":"AAA Certificate Services","sha256":"7485B51C0ED192878FA1D2F948FB529AE1842CC5086C4B67F7BE5B2039DE9489","serial_hex":"8D5A4811939EF447D77111CDD9849AE9"}
+      ]
+    },
+    {
+      "name": "EM EV TLS CA - G3C",
+      "usage": "tls",
+      "spki_sha256": "5C0660A2B164910D8FF589C18E14552E9E0EC237DCEFE2CB736D41A4811F81A0",
+      "certificates": [
+        {"issued_by":"emSign Root TLS CA - G3","sha256":"432EC25F0D28DE9006D97BF752F17BBB2CD41F669933FCB072D9A1148D0261F3","serial_hex":"8009928A64107601AF05FA2F19F109"},
+        {"issued_by":"AAA Certificate Services","sha256":"FD9D5C2DBBD4995AB69B8D50C439D9527B00529199C2FD01B2174EB58F07021F","serial_hex":"05F078752DECE7A1BB8595D303167171"}
+      ]
+    },
+    {
+      "name": "EM OV CS CA - G3B",
+      "usage": "code-signing",
+      "spki_sha256": "EC4FFA1AD0AC88081314B7AAFFEF6A91F97CD57291BB5BA686C5415F5EB4F6B6",
+      "certificates": [
+        {"issued_by":"emSign Root CS CA - G3","sha256":"9E39DE2881273ACC225A149C72BA3E0F51424963669AB633EE1DC7DF5DB067B4","serial_hex":"7818933F8F85B4619A2B35FBA83D0A"},
+        {"issued_by":"AAA Certificate Services","sha256":"A496E23AC0CAB8155FC9B117B97EAE368EFCBB9041AEC8804D5A308D2D01C2D8","serial_hex":"41E32B73AC185D6CE0D7480BACF84E69"}
+      ]
+    },
+    {
+      "name": "EM OV CS CA - G3C",
+      "usage": "code-signing",
+      "spki_sha256": "92C063D67E8F14DB71D288E11266FFDAF69CBF115F7BAB14F3BC2F68D25E0E30",
+      "certificates": [
+        {"issued_by":"emSign Root CS CA - G3","sha256":"4B2460A466F95FD40113BCDCCA2CEB29B3B093921DE45474DA7DF48874C630B1","serial_hex":"544B7F922C31AE220A4A922916F6E6"},
+        {"issued_by":"AAA Certificate Services","sha256":"84112972B8E59D14560AE7E7119654474AAD119990CF3722BFC1E3B91615E1FD","serial_hex":"D6A5EF613B390F32EF9CDF349F772841"}
+      ]
+    }
+  ]
+}

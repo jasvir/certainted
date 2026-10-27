@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#17343b">
+    <meta name="description" content="Unauthenticated community reports from Certainted independent TLS probes.">
+    <title>Reported Certificate Findings · Certainted</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to reports</a>
+    <header class="site-header">
+      <div class="brand"><img src="/sir-tainted-mark.svg" alt="" width="48" height="48"><div><strong>Certainted</strong><span>Public report ledger</span></div></div>
+      <nav aria-label="Sections"><a href="#reports">Reports</a><a href="#verify">How to verify</a><a href="#about">About the evidence</a></nav>
+      <span class="public-pill">Unverified submissions</span>
+    </header>
+    <main id="main">
+      <div class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow">The field ledger / Community submissions</p>
+          <h1>Reported certificate findings</h1>
+          <p>Certainted runs locally on your computer or a compatible network host. Its optional CONNECT proxy sees destination metadata and relays encrypted bytes, but does not decrypt or inspect application contents, store tunneled bytes, or terminate application TLS. For eligible destinations, Certainted makes its own separate TLS connection to retrieve the certificate chain presented to that probe.</p>
+          <p>This dashboard contains findings that people running Certainted voluntarily choose to share. Visiting it does not upload your local Certainted inventory. Shared reports omit device and workload identity, though hostnames can still reveal sensitive information and the hosting network may see a sender's IP address.</p>
+          <p class="intro-note"><strong>Read every report as a claim.</strong> Submissions are unauthenticated. certainted.com checks the report format, but it does not verify that the probe happened or that the original application received this certificate.</p>
+        </div>
+        <figure class="intro-portrait"><img src="/sir-tainted-mark.svg" alt="Sir Tainted, a smiling face in a knight's helmet" width="250" height="250"><figcaption><strong>Sir Tainted</strong><span>Observer of chains</span></figcaption>
+          <div class="intro-actions">
+            <a class="intro-download" href="https://github.com/jasvir/certainted/releases/latest" target="_blank" rel="noopener noreferrer">Download Certainted <span aria-hidden="true">↓</span></a>
+            <a class="intro-source" href="https://github.com/jasvir/certainted" target="_blank" rel="noopener noreferrer">Certainted on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </figure>
+      </div>
+      <p id="load-status" class="status" role="status" aria-live="polite">Loading community reports…</p>
+      <section id="overview" aria-labelledby="overview-title">
+        <div class="section-heading"><div><p class="eyebrow">01 / At a glance</p><h2 id="overview-title">Public overview</h2></div><button id="refresh" type="button">Refresh reports</button></div>
+        <div id="stats" class="stat-grid" aria-live="polite"></div>
+      </section>
+      <section id="reports" aria-labelledby="reports-title">
+        <div class="section-heading"><div><p class="eyebrow">02 / The evidence</p><h2 id="reports-title">Submitted reports</h2></div></div>
+        <p class="section-description">A hostname here is a destination the reporter says their independent probe examined. It does not show the application’s own TLS session. A CA watchlist status is assigned by a reporter and is not an authoritative CA verdict.</p>
+        <search class="filters">
+          <div><label for="kind-filter">Report type</label><select id="kind-filter"><option value="">All types</option><option value="crl">CRL match</option><option value="watch">CA watchlist match</option></select></div>
+          <div><label for="evidence-filter">Evidence</label><select id="evidence-filter"><option value="">All evidence</option><option value="direct">Directly presented</option><option value="candidate">Candidate path (inferred)</option></select></div>
+          <div class="search-field"><label for="report-search">Search reports</label><input id="report-search" type="search" placeholder="Hostname or fingerprint" autocomplete="off"></div>
+        </search>
+        <p id="result-count" class="result-count"></p>
+        <div id="report-list" class="report-list"></div>
+      </section>
+      <section id="verify" aria-labelledby="verify-title">
+        <div class="section-heading"><div><p class="eyebrow">03 / Read with care</p><h2 id="verify-title">How to check a report</h2></div></div>
+        <div class="guidance-grid">
+          <article><span class="guidance-number">01</span><h3>Probe the hostname yourself</h3><p>Make a fresh TLS connection. Inspect its presented chain and, if needed, build candidate paths with your own trust store; then compare the listed certificate fingerprint. A different result can reflect rotation, CDN routing, TLS client settings, or network location. It cannot settle what was presented at the reporter’s past vantage.</p></article>
+          <article><span class="guidance-number">02</span><h3>Check revocation evidence</h3><p>For a CRL report, obtain the CRL from a trusted source and compare its fingerprint, issuer key, serial, and revocation date. The site receives hashes and metadata, not the CRL itself, and does not fetch it for you.</p></article>
+          <article><span class="guidance-number">03</span><h3>Check CA status independently</h3><p>For a watchlist report, the status and severity are the reporter’s own labels. Look for an authoritative CA, browser, or platform notice before drawing a conclusion.</p></article>
+        </div>
+      </section>
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-heading"><div><p class="eyebrow">04 / Boundaries</p><h2 id="about-title">About the evidence</h2></div></div>
+        <p class="section-description">Certainted probes destinations independently. These reports do not prove which certificate an application received, which root it trusted, whether its connection succeeded, or whether interception occurred. Public submissions are unauthenticated and may be false. No hostnames from private networks, device identifiers, workload names, or application contents belong in this feed.</p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-note"><strong>Certainted observes; it does not block connections.</strong> Public findings are claims to investigate, not verdicts.</p>
+        <div class="footer-actions">
+          <div class="social-block">
+            <span class="footer-label" id="social-label">Find Jasvir</span>
+            <nav class="social-links" aria-labelledby="social-label">
+              <a href="https://github.com/jasvir" target="_blank" rel="noopener noreferrer" aria-label="Jasvir on GitHub">
+                <!-- Primer Octicons GitHub mark; see THIRD_PARTY_NOTICES.txt. -->
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="currentColor"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/jasvirnagra/" target="_blank" rel="noopener noreferrer" aria-label="Jasvir on LinkedIn"><span aria-hidden="true">in</span></a>
+              <a href="https://x.com/jasvir" target="_blank" rel="noopener noreferrer" aria-label="Jasvir on X"><span aria-hidden="true">𝕏</span></a>
+              <a href="https://bsky.app/profile/jasvir.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Jasvir on Bluesky">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 10C9 5 3 1 3 6c0 5 3 7 7 6-6 0-5 7-1 6 2-1 3-4 3-4s1 3 3 4c4 1 5-6-1-6 4 1 7-1 7-6 0-5-6-1-9 4Z" fill="currentColor"/></svg>
+              </a>
+            </nav>
+          </div>
+          <a class="project-link" href="https://github.com/jasvir/certainted" target="_blank" rel="noopener noreferrer">Certainted on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
